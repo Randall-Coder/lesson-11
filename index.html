@@ -36,13 +36,20 @@
 </body>
 
 <script>
-$("#saveNotesBtn").click(function()){
+try {
+    var loadNotes = localStorage.getItem("notes");
+}
+catch(err) {
+    var loadNotes = "Enter your notes here and click 'Save'";
+}
+$("#note-area").val(loadNotes);
+
+$("#saveNotesBtn").click(function(){
     var currentNotes = $("#note-area").val()
     localStorage.setItem("notes", currentNotes)
-}
+});
 
-var oldNotes = localStorage.getItem("notes")
-$("#note-area").val(oldNotes)
+
 
 </script>
 </html>
